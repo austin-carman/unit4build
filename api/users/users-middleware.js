@@ -5,7 +5,13 @@ const checkSomething = (req, res, next) => {
     next()
 }
 
+const checkBody = (req, res, next) => {
+    console.log('checked body');
+    next()
+}
+
 
 module.exports = {
     checkSomething,
+    checkBody,
 }
