@@ -1,4 +1,23 @@
 const Users = require('../users/users-model');
+const { JWT_SECRET } = require('../../secret/index');
+const jwt = require('jsonwebtoken');
+
+const restricted = (req, res, next) => {
+  const token = req.headers.authorization;
+  console.log('restricted middleware token', token); // token here is undefined
+  if (token) {
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
+      if (err) {
+        res.status(401).json({ message: 'Token invalid' })
+      } else {
+        req.decodedJwt = decoded;
+        next()
+      }
+    })
+  } else {
+    res.status(401).json({ message: 'Token required' });
+  }
+}
 
 const validateBody = (req, res, next) => {
     const { username, password } = req.body;
@@ -46,4 +65,5 @@ module.exports = {
     validateBody,
     checkUsernameFree,
     checkUsernameExists,
+    restricted
 }

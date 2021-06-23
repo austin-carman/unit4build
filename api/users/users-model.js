@@ -3,12 +3,17 @@ const db = require('../data/db-config');
 function findBy(filter) {
     const user = db('users')
       .where(filter)
-      .first()
+      .first();
     return user;
 }
 
-function findById(user_id) {
-    return (`hurray! you found user ${user_id}`);
+async function findById(user_id) {
+    const user = await db('users as u')
+        .select('u.username', 'a.title', 'a.link', 'a.text', 'ua.category', 'ua.importance')
+        .join('user_articles as ua', 'u.user_id', '=', 'ua.user_id')
+        .join('articles as a', 'a.article_id', '=', 'ua.article_id')
+        .where('u.user_id', user_id)
+    return user;
 }
 
 async function addUser({ username, password }) {
