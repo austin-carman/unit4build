@@ -11,6 +11,7 @@
     "rollbackh": "heroku run knex migrate:rollback -a unit4buildwk",
     "databaseh": "heroku pg:psql -a unit4buildwk",
     "seedh": "heroku run knex seed:run -a unit4buildwk",
+    "resetdb": "npm run rollback && npm run migrate && npm run seed",
     "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
     "deploy": "git push heroku main"
   },
@@ -20,10 +21,13 @@
   },
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "=2.8.5",
     "dotenv": "=8.2.0",
     "express": "=4.17.1",
     "helmet": "=4.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
     "knex": "=0.95.3",
     "knex-cleaner": "=1.3.1",
     "pg": "=8.5.1"

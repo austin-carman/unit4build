@@ -2,13 +2,14 @@ exports.up = async (knex) => {
   await knex.schema
     .createTable('users', (users) => {
       users.increments('user_id')
-      users.string('user_username', 200).notNullable()
-      users.string('user_password', 200).notNullable()
+      users.string('username', 200).notNullable()
+      users.string('password', 200).notNullable()
     })
     .createTable('articles', (articles) => {
       articles.increments('article_id')
-      articles.string('article_title', 200).notNullable()
-      articles.string('article_link', 200).notNullable()
+      articles.string('title', 200).notNullable()
+      articles.string('link', 200).notNullable()
+      articles.string('text', 200)
     })
     .createTable('user_articles', (user_articles) => {
       user_articles.increments('user_articles_id')
@@ -27,6 +28,8 @@ exports.up = async (knex) => {
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
       user_articles.string('category', 200)
+      user_articles.integer('importance', 200)
+        .unsigned()
     })
 }
 
