@@ -5,7 +5,9 @@
   Endpoint: [POST] /register
   
   Body:
+  
     username: required
+    
     password: required
   
   
