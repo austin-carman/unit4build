@@ -1,8 +1,9 @@
-*** Register a new user ***
+BASEURL: https://unit4buildwk.herokuapp.com/
 
-  BaseURL: /api/auth
+
+*** Register a new user ***
   
-  Endpoint: [POST] /register
+  Endpoint: [POST] api/auth/register
   
   Body:
   
@@ -12,33 +13,28 @@
   
   
 *** User Login ***
-
-  BaseURL: /api/auth
   
-  Endpoint: [POST] /login
+  Endpoint: [POST] /api/auth/login
   
   Body:
   
     username: required
     password: required
+    
 
 *** Get all articles of all users ***
-
-  BaseURL: /api/articles
   
-  Endpoint: [GET] /
+  Endpoint: [GET] /api/articles
+  
   
 *** Get all saved articles for a specific user *** 
-
-  BaseURL: /api/articles
   
-  Endpoint: [GET] /:user_id
-
- *** Update an article for a specific user *** 
- 
-  BaseURL: /api/articles
+  Endpoint: [GET] /api/articles/:user_id
   
-  Endpoint: [PUT] /:user_id/edit
+
+ *** Update an article for a specific user ***
+  
+  Endpoint: [PUT] /api/articles/:user_id/edit
   
   Body:
   
@@ -48,12 +44,11 @@
     notes: optional
     category: optional
     importance: optional
+    
 
  *** Add new saved article for a specific user *** 
- 
-  BaseURL: /api/articles
   
-  Endpoint: [PUT] /:user_id/add
+  Endpoint: [PUT] /api/articles/:user_id/add
   
   Body:
   
@@ -62,9 +57,8 @@
     notes: optional
     category: optional
     importance: optional
+    
 
  *** Delete a user's saved article *** 
- 
-  BaseURL: /api/articles
   
-  Endpoint: [PUT] /:article_id
+  Endpoint: [PUT] /api/articles/:article_id
