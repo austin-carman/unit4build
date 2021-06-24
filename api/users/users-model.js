@@ -7,7 +7,7 @@ function findBy(filter) {
     return user;
 }
 
-async function findById(user_id) {
+async function findUserById(user_id) {
     const user = await db('users as u')
         .select('u.username', 'a.title', 'a.link', 'a.text', 'ua.category', 'ua.importance')
         .join('user_articles as ua', 'u.user_id', '=', 'ua.user_id')
@@ -29,7 +29,7 @@ async function addUser({ username, password }) {
 }
 
 module.exports = {
-    findById,
+    findUserById,
     addUser,
     findBy,
 }

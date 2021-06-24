@@ -7,8 +7,10 @@ exports.up = async (knex) => {
     })
     .createTable('articles', (articles) => {
       articles.increments('article_id')
-      articles.string('title', 200).notNullable()
-      articles.string('link', 200).notNullable()
+      articles.string('title', 200)
+        .notNullable()
+      articles.string('link', 200)
+        .notNullable()
       articles.string('text', 200)
     })
     .createTable('user_articles', (user_articles) => {
@@ -27,6 +29,8 @@ exports.up = async (knex) => {
         .inTable('articles')
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
+      user_articles.string('title', 200)
+      user_articles.string('link', 200)
       user_articles.string('category', 200)
       user_articles.integer('importance', 200)
         .unsigned()
