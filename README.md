@@ -48,7 +48,7 @@ BASEURL: https://unit4buildwk.herokuapp.com/
 
  *** Add new saved article for a specific user *** 
   
-  Endpoint: [PUT] /api/articles/:user_id/add
+  Endpoint: [POST] /api/articles/:user_id/add
   
   Body:
   
@@ -61,4 +61,7 @@ BASEURL: https://unit4buildwk.herokuapp.com/
 
  *** Delete a user's saved article *** 
   
-  Endpoint: [PUT] /api/articles/:article_id
+  Endpoint: [DELETE] /api/articles/:article_id
+  
+  
+  
