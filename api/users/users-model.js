@@ -1,5 +1,6 @@
 const db = require('../data/db-config');
 
+// find user by ....
 function findBy(filter) {
     const user = db('users')
       .where(filter)
@@ -7,6 +8,7 @@ function findBy(filter) {
     return user;
 }
 
+// find user by ID
 async function findUserById(user_id) {
     const user = await db('users as u')
         .select('u.username', 'a.title', 'a.link', 'a.text', 'ua.category', 'ua.importance')
@@ -16,6 +18,8 @@ async function findUserById(user_id) {
     return user;
 }
 
+
+// Register a new user
 async function addUser({ username, password }) {
     const newUser = await db.transaction(async trx => {
         const [result] = await trx('users')

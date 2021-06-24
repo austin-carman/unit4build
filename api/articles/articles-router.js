@@ -1,13 +1,13 @@
 const router = require('express').Router()
 const Articles = require('./articles-model');
 
-// //get all articles of all users
-// router.get('/', (req, res, next) => {
-//     Articles.getAllArticles()
-//         .then(articles => {
-//             res.json(articles)
-//         })
-// })
+//get all articles of all users
+router.get('/', (req, res, next) => {
+    Articles.getAllArticles()
+        .then(articles => {
+            res.json(articles)
+        })
+})
 
 //get all saved articles for a specific user
 router.get('/:user_id', (req, res, next) => {

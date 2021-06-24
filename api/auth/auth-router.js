@@ -4,7 +4,7 @@ const tokenBuilder = require('./token-builder');
 const Users = require('../users/users-model');
 const { validateBody, checkUsernameFree, checkUsernameExists } = require('./auth-middleware');
 
-
+// Register a new user
 router.post('/register', validateBody, checkUsernameFree, (req, res, next) => {
     const { username, password } = req.body;
     const hash = bcrypt.hashSync(password, 8);
@@ -16,7 +16,7 @@ router.post('/register', validateBody, checkUsernameFree, (req, res, next) => {
       .catch(next);
   });
 
-
+// User Login
 router.post('/login', validateBody, checkUsernameExists, (req, res, next) => {
     if (bcrypt.compareSync(req.body.password, req.user.password)) {
         const token = tokenBuilder(req.user)

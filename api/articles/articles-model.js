@@ -1,10 +1,10 @@
 const db = require('../data/db-config');
 
-// // all articles by all users
-// async function getAllArticles() {
-//     const articles = await db('articles')
-//     return articles
-// }
+// all articles by all users
+async function getAllArticles() {
+    const articles = await db('articles')
+    return articles
+}
 
 // all articles of specific user
 async function getUserArticles(user_id) {
@@ -86,7 +86,7 @@ async function deleteArticle(article_id) {
 }
 
 module.exports = {
-    // getAllArticles,
+    getAllArticles,
     updateArticle,
     addNewArticle,
     getUserArticles,
