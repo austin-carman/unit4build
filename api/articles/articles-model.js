@@ -68,6 +68,7 @@ async function addNewArticle(user_id, article) {
     return newArticle;
 }
 
+// delete a user's saved article
 async function deleteArticle(article_id) {
     const [deleted] = await db('articles')
         .where('article_id', article_id)

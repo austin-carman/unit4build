@@ -36,6 +36,7 @@ router.post('/:user_id/add', (req, res, next) => {
         .catch(next)
 })
 
+// delete a user's saved article
 router.delete('/:article_id', (req, res, next) => {
     Articles.deleteArticle(req.params.article_id)
         .then(removed => {
