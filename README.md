@@ -1,6 +1,9 @@
 *** Register a new user ***
+
   BaseURL: /api/auth
+  
   Endpoint: [POST] /register
+  
   Body:
     username: required
     password: required
